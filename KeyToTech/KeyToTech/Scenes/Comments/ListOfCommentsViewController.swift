@@ -20,6 +20,7 @@ final class ListOfCommentsViewController: UIViewController {
     var lowerBound: Int
     var upperBound: Int
     var comments: [Comment] = []
+    var initialComments: [Comment] = []
     
     // MARK: - Initialization
     
@@ -56,14 +57,9 @@ final class ListOfCommentsViewController: UIViewController {
             self.navigationItem.searchController = {
                 let searchController = UISearchController(searchResultsController: nil)
                 searchController.delegate = self
+                searchController.searchResultsUpdater = self
                 searchController.obscuresBackgroundDuringPresentation = true
                 return searchController
-            }()
-        } else {
-            self.navigationItem.titleView = {
-                let searchBar = UISearchBar()
-                searchBar.delegate = self
-                return searchBar
             }()
         }
         
@@ -118,13 +114,10 @@ final class ListOfCommentsViewController: UIViewController {
 }
 
 // MARK: - SearchController Delegate
-extension ListOfCommentsViewController: UISearchControllerDelegate {
-    
-}
-
-// MARK: - SearchBar Delegate
-extension ListOfCommentsViewController: UISearchBarDelegate {
-    
+extension ListOfCommentsViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // should be implemented
+    }
 }
 
 // MARK: - TableView DataSource
