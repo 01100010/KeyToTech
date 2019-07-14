@@ -37,6 +37,14 @@ final class InitialInputView: UIView {
         return self.lowerBoundTextField.isFirstResponder || self.upperBoundTextField.isFirstResponder
     }
     
+    var leftBarButtonItem: UIBarButtonItem {
+        return .init(barButtonSystemItem: .done, target: self, action: #selector(self.accept))
+    }
+    
+    var rightBarButtonItem: UIBarButtonItem {
+        return .init(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancel))
+    }
+    
     // MARK: Private
     
     private var stackView: UIStackView!
@@ -69,7 +77,14 @@ final class InitialInputView: UIView {
     
     // MARK: Actions
     
+    @objc private func cancel() {
+        self.resignFirstResponder()
+        self.lowerBoundTextField.text = nil
+        self.upperBoundTextField.text = nil
+    }
+    
     @objc private func accept() {
+        self.resignFirstResponder()
         self.onAcceptButtonTapped?()
     }
     
@@ -128,13 +143,11 @@ final class InitialInputView: UIView {
     private func setupConstraints() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate(
-            [
-                self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-                self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 64),
-                self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -64)
-            ]
-        )
+        NSLayoutConstraint.activate([
+            self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 64),
+            self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -64)
+        ])
     }
 }

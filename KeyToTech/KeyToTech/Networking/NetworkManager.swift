@@ -28,9 +28,24 @@ final class NetworkManager {
     
     // MARK: - Methods
     
-    func fetchComments(completion: @escaping ((FetchCommentsResponse) -> Void)) {
+    func configureFetchCommentsURL(with id: Int) -> URL? {
+        if var urlComponents = URLComponents(string: API.Endpoint.comments) {
+            urlComponents.queryItems = []
+            (1...Constant.commentsPerPage).forEach {
+                urlComponents.queryItems?.append(.init(name: "id", value: String(id + $0))) // 🤷🏽‍♂️
+            }
+            
+            if let url = urlComponents.url {
+                return url
+            }
+        }
+    
+        return nil
+    }
+    
+    func fetchComments(with lastCommentID: Int, completion: @escaping ((FetchCommentsResponse) -> Void)) {
         guard
-            let url = URL(string: API.Endpoint.comments)
+            let url = self.configureFetchCommentsURL(with: lastCommentID)
         else {
             return completion(.failure(NetworkError.invalidURL))
         }

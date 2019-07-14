@@ -9,5 +9,5 @@
 import Foundation
 
 enum Constant {
-    
+    static let commentsPerPage: Int = 10
 }

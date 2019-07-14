@@ -14,23 +14,35 @@ final class InitialInputViewController: UIViewController {
     // MARK: Public
     
     let viewModel: InitialInputViewModel = .init()
-    var rootView: InitialInputView {
-        return self.view as! InitialInputView
-    }
+    let rootView: InitialInputView = .init()
     
     // MARK: - Lifecycle
     
     override func loadView() {
-        self.view = InitialInputView()
+        self.view = self.rootView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavigationBar()
         self.setupRootView()
         self.setupViewModel()
     }
     
     // MARK: Setup
+    
+    private func setupNavigationBar() {
+        self.navigationItem.title = "Initial Input"
+        self.navigationItem.leftBarButtonItem = self.rootView.leftBarButtonItem
+        self.navigationItem.rightBarButtonItem = self.rootView.rightBarButtonItem
+        
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.isTranslucent = true
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+    }
     
     private func setupRootView() {
         self.rootView.onAcceptButtonTapped = { [weak self] in
@@ -38,14 +50,17 @@ final class InitialInputViewController: UIViewController {
                 let lowerBound = self?.rootView.lowerBound,
                 let upperBound = self?.rootView.upperBound
             {
-                guard
-                    lowerBound < upperBound
-                else {
+                guard lowerBound >= 0 else {
+                    self?.showErrorAlert(InternalError.negativeValue)
+                    return
+                }
+                
+                guard lowerBound < upperBound else {
                     self?.showErrorAlert(InternalError.lowerIsGreaterThenUpper)
                     return
                 }
                 
-                self?.viewModel.fetchComments()
+                self?.viewModel.fetchComments(with: lowerBound)
             } else {
                 self?.showErrorAlert(InternalError.absenseOfBounds)
             }
@@ -56,9 +71,13 @@ final class InitialInputViewController: UIViewController {
         self.viewModel.didFetchComments = { [weak self] (result) in
             switch result {
             case .success(let comments):
-                for comment in comments {
-                    print(comment.body)
-                }
+                let controller = ListOfCommentsViewController(
+                    with: comments,
+                    lowerBound: (self?.rootView.lowerBound)!,
+                    upperBound: (self?.rootView.upperBound)!
+                )
+                
+                self?.navigationController?.pushViewController(controller, animated: true)
             case .failure(let error):
                 self?.showErrorAlert(error)
             }
@@ -77,15 +96,19 @@ final class InitialInputViewController: UIViewController {
 private extension InitialInputViewController {
     enum InternalError: LocalizedError {
         case absenseOfBounds
+        case negativeValue
         case lowerIsGreaterThenUpper
         
         var errorDescription: String? {
             switch self {
             case .absenseOfBounds:
                 return "Please input lower and upper bounds."
+            case .negativeValue:
+                return "Lower bound should be positive"
             case .lowerIsGreaterThenUpper:
                 return "Please check lower and upper bounds value. Lower bound should be less the upper bound."
             }
+            
         }
     }
 }

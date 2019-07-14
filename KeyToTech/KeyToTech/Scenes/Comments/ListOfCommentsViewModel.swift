@@ -1,5 +1,5 @@
 //
-//  InitialInputViewModel.swift
+//  ListOfCommentsViewModel.swift
 //  KeyToTech
 //
 //  Created by Oleksii on 7/14/19.
@@ -8,18 +8,20 @@
 
 import Foundation
 
-final class InitialInputViewModel {
+final class ListOfCommentsViewModel {
     
     // MARK: - Properties
     // MARK: Callback
     
     var didFetchComments: ((NetworkManager.FetchCommentsResponse) -> Void)?
     
+    // MARK: Private
+    
     // MARK: - Methods
     // MARK: Public
     
-    func fetchComments(with id: Int) {
-        NetworkManager.shared.fetchComments(with: id) { [weak self] (response) in
+    func fetchNextPartOfComments(_ lastCommentID: Int) {
+        NetworkManager.shared.fetchComments(with: lastCommentID) { [weak self] (response) in
             DispatchQueue.main.async { [weak self] in
                 self?.didFetchComments?(response)
             }

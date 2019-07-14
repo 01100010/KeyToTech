@@ -20,6 +20,13 @@
 		49A044BF22DB342E00FFB1DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044BE22DB342E00FFB1DE /* Constants.swift */; };
 		49A044C122DB345A00FFB1DE /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044C022DB345A00FFB1DE /* NetworkConstants.swift */; };
 		49A044C422DB347C00FFB1DE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044C322DB347C00FFB1DE /* Comment.swift */; };
+		49A044C622DB50C200FFB1DE /* ListOfCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044C522DB50C200FFB1DE /* ListOfCommentsView.swift */; };
+		49A044C822DB50CC00FFB1DE /* ListOfCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044C722DB50CC00FFB1DE /* ListOfCommentsViewModel.swift */; };
+		49A044CA22DB50DA00FFB1DE /* ListOfCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044C922DB50DA00FFB1DE /* ListOfCommentsViewController.swift */; };
+		49A044CE22DB57A600FFB1DE /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044CD22DB57A600FFB1DE /* CommentTableViewCell.swift */; };
+		49A044D122DB57CB00FFB1DE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044D022DB57CB00FFB1DE /* TableViewCell.swift */; };
+		49A044D322DB588C00FFB1DE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044D222DB588C00FFB1DE /* Reusable.swift */; };
+		49A044D522DB7CCF00FFB1DE /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A044D422DB7CCF00FFB1DE /* ActivityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		49A044BE22DB342E00FFB1DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49A044C022DB345A00FFB1DE /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		49A044C322DB347C00FFB1DE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		49A044C522DB50C200FFB1DE /* ListOfCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCommentsView.swift; sourceTree = "<group>"; };
+		49A044C722DB50CC00FFB1DE /* ListOfCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCommentsViewModel.swift; sourceTree = "<group>"; };
+		49A044C922DB50DA00FFB1DE /* ListOfCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCommentsViewController.swift; sourceTree = "<group>"; };
+		49A044CD22DB57A600FFB1DE /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		49A044D022DB57CB00FFB1DE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		49A044D222DB588C00FFB1DE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		49A044D422DB7CCF00FFB1DE /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +93,7 @@
 				49A044C222DB346B00FFB1DE /* Models */,
 				49A044B622DB2F1A00FFB1DE /* Networking */,
 				49A044B122DB2C8600FFB1DE /* Scenes */,
+				49A044CB22DB577D00FFB1DE /* Views */,
 			);
 			path = KeyToTech;
 			sourceTree = "<group>";
@@ -86,6 +101,7 @@
 		49A044AA22D9EA9D00FFB1DE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				49A044D222DB588C00FFB1DE /* Reusable.swift */,
 				49A044AD22D9F87500FFB1DE /* UIView+Extension.swift */,
 				49A044AF22D9F9B800FFB1DE /* UIViewController+Alert.swift */,
 			);
@@ -114,6 +130,9 @@
 		49A044B522DB2D8400FFB1DE /* Comments */ = {
 			isa = PBXGroup;
 			children = (
+				49A044C522DB50C200FFB1DE /* ListOfCommentsView.swift */,
+				49A044C722DB50CC00FFB1DE /* ListOfCommentsViewModel.swift */,
+				49A044C922DB50DA00FFB1DE /* ListOfCommentsViewController.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -142,6 +161,32 @@
 				49A044C322DB347C00FFB1DE /* Comment.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		49A044CB22DB577D00FFB1DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49A044CF22DB57BF00FFB1DE /* Base */,
+				49A044CC22DB578E00FFB1DE /* TableViewCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49A044CC22DB578E00FFB1DE /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				49A044D422DB7CCF00FFB1DE /* ActivityTableViewCell.swift */,
+				49A044CD22DB57A600FFB1DE /* CommentTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		49A044CF22DB57BF00FFB1DE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				49A044D022DB57CB00FFB1DE /* TableViewCell.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,15 +259,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A044D322DB588C00FFB1DE /* Reusable.swift in Sources */,
 				49A044B022D9F9B800FFB1DE /* UIViewController+Alert.swift in Sources */,
+				49A044D122DB57CB00FFB1DE /* TableViewCell.swift in Sources */,
 				49A044BC22DB340600FFB1DE /* NetworkError.swift in Sources */,
 				49A044C122DB345A00FFB1DE /* NetworkConstants.swift in Sources */,
 				49A044A922D9E2D300FFB1DE /* InitialInputView.swift in Sources */,
+				49A044D522DB7CCF00FFB1DE /* ActivityTableViewCell.swift in Sources */,
 				49A044C422DB347C00FFB1DE /* Comment.swift in Sources */,
 				49A0449922D9E17700FFB1DE /* InitialInputViewController.swift in Sources */,
 				49A044B822DB2F3100FFB1DE /* NetworkManager.swift in Sources */,
+				49A044CE22DB57A600FFB1DE /* CommentTableViewCell.swift in Sources */,
 				49A044AE22D9F87500FFB1DE /* UIView+Extension.swift in Sources */,
 				49A044B422DB2CB900FFB1DE /* InitialInputViewModel.swift in Sources */,
+				49A044C622DB50C200FFB1DE /* ListOfCommentsView.swift in Sources */,
+				49A044C822DB50CC00FFB1DE /* ListOfCommentsViewModel.swift in Sources */,
+				49A044CA22DB50DA00FFB1DE /* ListOfCommentsViewController.swift in Sources */,
 				49A0449722D9E17700FFB1DE /* AppDelegate.swift in Sources */,
 				49A044BF22DB342E00FFB1DE /* Constants.swift in Sources */,
 			);
